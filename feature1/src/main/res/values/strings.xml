@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="get_data_btn_text">Get Data</string>
+    <string name="error_btn_text">Error</string>
+</resources>
