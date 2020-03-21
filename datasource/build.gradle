@@ -28,7 +28,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Internal dependencies
+    implementation project(":core")
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
@@ -47,11 +49,4 @@ dependencies {
     def pagingVersion = '2.1.2'
     implementation "androidx.paging:paging-runtime:$pagingVersion"
     implementation "androidx.paging:paging-rxjava2:$pagingVersion"
-
-    // Internal dependencies
-    implementation project(":core")
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

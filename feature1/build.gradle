@@ -23,7 +23,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Internal dependencies
-    implementation project(':shared')
-    implementation project(':core')
     implementation project(':app')
+    implementation project(':sharedandroid')
+    implementation project(':core')
 }
