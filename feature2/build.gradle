@@ -22,7 +22,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Internal dependencies
+    // Base module
     implementation project(':app')
-    implementation project(':sharedandroid')
 }

@@ -36,7 +36,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Internal dependencies
-    implementation project(':core')
-    implementation project(':sharedandroid')
+    // To expose all the common dependencies for all features
+    api project(':sharedandroid')
 }
