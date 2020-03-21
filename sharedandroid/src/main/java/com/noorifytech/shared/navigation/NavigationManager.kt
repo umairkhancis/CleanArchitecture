@@ -14,7 +14,7 @@ object Feature2 : Screen {
 }
 
 object Feature3 : Screen {
-    override val actionName = "com.noorifytech.feature2.view.activity.MoviesListActivity"
+    override val actionName = "com.noorifytech.feature3.Feature3Activity"
 }
 
 /**
