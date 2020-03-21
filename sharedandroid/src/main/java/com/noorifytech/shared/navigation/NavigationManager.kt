@@ -5,11 +5,15 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import com.noorifytech.shared.extensions.showToast
 
-object GetDataScreen : Screen {
+object Feature1 : Screen {
     override val actionName = "com.noorifytech.feature1.view.Feature1Activity"
 }
 
-object MoviesListingsScreen : Screen {
+object Feature2 : Screen {
+    override val actionName = "com.noorifytech.feature2.view.activity.MoviesListActivity"
+}
+
+object Feature3 : Screen {
     override val actionName = "com.noorifytech.feature2.view.activity.MoviesListActivity"
 }
 
