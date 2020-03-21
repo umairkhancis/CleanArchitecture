@@ -1,18 +1,19 @@
 package feature2.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
-import com.noorifytech.cleanarchitecture.Screens
-import com.noorifytech.cleanarchitecture.navigateTo
 import com.noorifytech.feature2.R
 import com.noorifytech.feature2.databinding.ActivityMoviesListBinding
 import com.noorifytech.shared.extensions.hide
 import com.noorifytech.shared.extensions.show
+import com.noorifytech.shared.navigation.navigateTo
+import com.noorifytech.shared.ui.utils.showSnackBar
 import feature2.factory.MoviesFeatureFactory
+import feature2.navigation.MovieDetailsScreen
 import feature2.presenter.MoviesListPresenter
 import feature2.repository.vo.MovieVO
 import feature2.view.MoviesListView
@@ -47,8 +48,8 @@ class MoviesListActivity : AppCompatActivity(),
     }
 
     private fun initRecyclerView() {
-        binding.moviesListRV.layoutManager = LinearLayoutManager(this)
-        binding.moviesListRV.addItemDecoration(
+        binding.moviesListRv.layoutManager = LinearLayoutManager(this)
+        binding.moviesListRv.addItemDecoration(
             DividerItemDecoration(
                 this,
                 DividerItemDecoration.VERTICAL
@@ -56,7 +57,7 @@ class MoviesListActivity : AppCompatActivity(),
         )
 
         moviesListAdapter = MoviesPagedListAdapter(this, this)
-        binding.moviesListRV.adapter = moviesListAdapter
+        binding.moviesListRv.adapter = moviesListAdapter
     }
 
     override fun onDestroy() {
@@ -68,8 +69,10 @@ class MoviesListActivity : AppCompatActivity(),
     override fun showList(list: PagedList<MovieVO>) =
         moviesListAdapter.submitList(list)
 
-    override fun showMovieDetailsScreen(movieId: Int) =
-        navigateTo(Screens.MovieDetailsScreen)
+    override fun showMovieDetailsScreen(movieId: Int) {
+        val movieDetailIntent = Intent().apply { putExtra(MOVIE_ID_KEY, movieId) }
+        navigateTo(MovieDetailsScreen, movieDetailIntent)
+    }
 
     override fun showLoading() =
         binding.progressBar.show()
@@ -78,16 +81,13 @@ class MoviesListActivity : AppCompatActivity(),
         binding.progressBar.hide()
 
     override fun showNoContent() =
-        showSnackBar(getString(R.string.error_no_content_message))
+        showSnackBar(binding.root, getString(R.string.error_no_content_message))
 
     override fun showNoConnection() =
-        showSnackBar(getString(R.string.no_internet))
+        showSnackBar(binding.root, getString(R.string.no_internet))
 
     override fun showError() =
-        showSnackBar(getString(R.string.error_generic_message))
-
-    private fun showSnackBar(message: String) =
-        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
+        showSnackBar(binding.root, getString(R.string.error_generic_message))
 
     override fun onMovieSelected(movieId: Int, position: Int) =
         presenter.onMovieSelected(movieId)
@@ -96,4 +96,8 @@ class MoviesListActivity : AppCompatActivity(),
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
+
+    companion object {
+        const val MOVIE_ID_KEY = "movie_id"
+    }
 }

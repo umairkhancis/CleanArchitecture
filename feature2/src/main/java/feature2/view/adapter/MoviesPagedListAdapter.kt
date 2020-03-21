@@ -37,15 +37,15 @@ class MoviesPagedListAdapter(
 
         fun bind(context: Context, movie: MovieVO) {
             val itemBinding = ActivityMoviesListItemBinding.bind(viewItem)
-            itemBinding.movieNameTV.text = movie.name
+            itemBinding.movieNameTv.text = movie.name
 
             Glide.with(context)
                 .asBitmap()
                 .load(movie.imageUrl)
                 .placeholder(R.mipmap.ic_launcher)
-                .into(itemBinding.movieImageIV)
+                .into(itemBinding.movieImageIv)
 
-            viewItem.setOnClickListener {
+            itemBinding.movieListItemRoot.setOnClickListener {
                 callback.onMovieSelected(movie.id, adapterPosition)
             }
         }

@@ -1,88 +1,73 @@
 package feature2.view.activity
 
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.noorifytech.feature2.R
+import com.noorifytech.feature2.databinding.ActivityMovieDetailsBinding
+import com.noorifytech.shared.extensions.hide
+import com.noorifytech.shared.extensions.show
+import com.noorifytech.shared.ui.utils.showSnackBar
+import feature2.factory.MoviesFeatureFactory
+import feature2.presenter.MovieDetailsPresenter
+import feature2.repository.vo.MovieDetailVO
+import feature2.view.MovieDetailsView
 
-//import com.noorifytech.moviesapp.R
-//import feature2.repository.vo.MovieDetailVO
-//import com.noorifytech.moviesapp.ui.factory.MoviesAppMvpFactory
-//import feature2.view.MovieDetailsView.Companion.MOVIE_ID_KEY
-//import kotlinx.android.synthetic.main.activity_movie_details.*
+class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
-class MovieDetailsActivity : AppCompatActivity()
-//    , MovieDetailsView
-{
-//
-//    private lateinit var presenter: MovieDetailsPresenter
-//    private val movieId: Int by lazy { intent.getIntExtra(MOVIE_ID_KEY, 0) }
-//
-////    =======================  Android Activity Callback Methods =======================
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        setContentView(R.layout.activity_movie_details)
-//
-//        init()
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//
-//        presenter.onDetach()
-//    }
-//
-////    =======================  MovieDetailsView Implementation =======================
-//
-//    override fun showMovieDetails(movie: MovieDetailVO) {
-//        movieNameTV.text = movie.title
-//        movieOverviewTV.text = movie.overview
-//        movieReleaseDateTV.text = movie.getReleaseDate()
-//
-//        Glide.with(this)
-//            .asBitmap()
-//            .load(movie.imageUrl)
-//            .placeholder(R.mipmap.ic_launcher)
-//            .into(movieImageIV)
-//    }
-//
-//    override fun showLoading() {
-//        progressBar.visibility = View.VISIBLE
-//    }
-//
-//    override fun hideLoading() {
-//        progressBar.visibility = View.GONE
-//    }
-//
-//    override fun showNoContent() {
-//        Snackbar.make(
-//            movie_details_root,
-//            R.string.error_no_content_message,
-//            Snackbar.LENGTH_LONG
-//        ).show()
-//    }
-//
-//    override fun showNoConnection() {
-//        Snackbar.make(
-//            movie_details_root,
-//            R.string.no_internet,
-//            Snackbar.LENGTH_LONG
-//        ).show()
-//    }
-//
-//    override fun showError() {
-//        Snackbar.make(
-//            movie_details_root,
-//            R.string.error_generic_message,
-//            Snackbar.LENGTH_LONG
-//        ).show()
-//    }
-//
-////    ==============================  Private Methods ==============================
-//
-//    private fun init() {
-//        // Prepare presenter to take up the control
-//        presenter = MoviesAppMvpFactory.createMovieDetailsPresenter()
-//        presenter.initView(this)
-//        presenter.onAttach(movieId)
-//    }
+    private lateinit var presenter: MovieDetailsPresenter
+    private lateinit var binding: ActivityMovieDetailsBinding
+    private val movieId: Int by lazy { intent.getIntExtra(MOVIE_ID_KEY, 0) }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        init()
+    }
+
+    private fun init() {
+        presenter = MoviesFeatureFactory.createMovieDetailsPresenter()
+        presenter.initView(this)
+        presenter.onAttach(movieId)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        presenter.onDetach()
+    }
+
+    override fun showMovieDetails(movie: MovieDetailVO) {
+        binding.movieNameTv.text = movie.title
+        binding.movieOverviewTv.text = movie.overview
+        binding.movieReleaseDateTv.text = movie.getReleaseDate()
+
+        Glide.with(this)
+            .asBitmap()
+            .load(movie.imageUrl)
+            .placeholder(R.mipmap.ic_launcher)
+            .into(binding.movieImageIv)
+    }
+
+    override fun showLoading() =
+        binding.progressBar.show()
+
+    override fun hideLoading() =
+        binding.progressBar.hide()
+
+    override fun showNoContent() =
+        showSnackBar(binding.root, getString(R.string.error_no_content_message))
+
+    override fun showNoConnection() {
+        showSnackBar(binding.root, getString(R.string.no_internet))
+    }
+
+    override fun showError() =
+        showSnackBar(binding.root, getString(R.string.error_generic_message))
+
+    companion object {
+        const val MOVIE_ID_KEY = "movie_id"
+    }
 }

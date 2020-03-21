@@ -37,9 +37,9 @@ class MovieDetailsPresenterImpl(private val getMovieDetailsUseCase: GetMovieDeta
 
         }
 
-//        this.baseProcessor.process(
-//            business = getMovieDetailsUseCase.getMovieDetails(movieId),
-//            callback = callback
-//        )
+        this.baseProcessor.process(
+            business = getMovieDetailsUseCase.getMovieDetails(movieId),
+            callback = callback
+        )
     }
 }
