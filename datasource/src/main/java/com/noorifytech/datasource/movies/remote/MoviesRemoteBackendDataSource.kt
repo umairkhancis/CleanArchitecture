@@ -4,12 +4,13 @@ import com.noorifytech.core.datasource.moviesbackend.MoviesBackendDataSource
 import com.noorifytech.core.dto.moviesbackend.MovieResponse
 import com.noorifytech.core.dto.moviesbackend.MoviesListResponse
 import com.noorifytech.datasource.movies.remote.retrofit.TmdbService
+import io.reactivex.Observable
 
 class MoviesRemoteBackendDataSource(private val tmdbService: TmdbService): MoviesBackendDataSource {
-    override suspend fun getPopularMovies(page: Int): MoviesListResponse =
-        tmdbService.getPopularMovies()
+    override fun getPopularMovies(page: Int): Observable<MoviesListResponse> =
+        tmdbService.getPopularMovies(page = "$page")
 
-    override suspend fun getMovieDetails(movieId: Int): MovieResponse =
+    override fun getMovieDetails(movieId: Int): Observable<MovieResponse> =
         tmdbService.getMovieDetails(movieId)
 
 }

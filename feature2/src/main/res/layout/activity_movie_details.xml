@@ -8,8 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/spacing_20"
-        android:paddingBottom="@dimen/spacing_20">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <ImageView
             android:id="@+id/movieImageIV"
@@ -22,10 +22,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/movieImageIV"
-            android:layout_marginStart="@dimen/spacing_16"
-            android:layout_marginTop="@dimen/spacing_16"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/font_24"
+            android:textSize="24sp"
             android:textStyle="bold"
             tools:text="Lord of the Rings" />
 
@@ -34,10 +35,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/movieNameTV"
-            android:layout_marginStart="@dimen/spacing_16"
-            android:layout_marginTop="@dimen/spacing_8"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
             android:textColor="@android:color/holo_green_dark"
-            android:textSize="@dimen/font_16"
+            android:textSize="16sp"
             tools:text="1991" />
 
         <TextView
@@ -45,11 +47,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/movieReleaseDateTV"
-            android:layout_marginStart="@dimen/spacing_16"
-            android:layout_marginTop="@dimen/spacing_16"
-            android:layout_marginEnd="@dimen/spacing_16"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:textColor="@android:color/secondary_text_light"
-            android:textSize="@dimen/font_20"
+            android:textSize="20sp"
             tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
 
         <ProgressBar

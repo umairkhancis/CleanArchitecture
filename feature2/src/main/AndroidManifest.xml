@@ -2,6 +2,8 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.noorifytech.feature2">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <dist:module
         dist:instant="false"
         dist:title="@string/title_feature2">
@@ -12,14 +14,14 @@
     </dist:module>
 
     <application>
-        <activity android:name="com.noorifytech.feature2.view.activity.MoviesListActivity">
+        <activity android:name="feature2.view.activity.MoviesListActivity">
             <intent-filter>
                 <action android:name="com.noorifytech.feature2.view.activity.MoviesListActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.noorifytech.feature2.view.activity.MovieDetailsActivity">
+        <activity android:name="feature2.view.activity.MovieDetailsActivity">
             <intent-filter>
                 <action android:name="com.noorifytech.feature2.view.activity.MovieDetailsActivity" />
                 <category android:name="android.intent.category.DEFAULT" />

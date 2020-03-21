@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -27,12 +28,35 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
-    implementation project(':core')
+    api 'com.google.android.material:material:1.1.0'
+    api 'androidx.annotation:annotation:1.1.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.core:core-ktx:1.2.0'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api 'androidx.recyclerview:recyclerview:1.1.0'
+
+    // Glide
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //Paging
+    def pagingVersion = '2.1.2'
+    api "androidx.paging:paging-runtime:$pagingVersion"
+    api "androidx.paging:paging-rxjava2:$pagingVersion"
+
+    // Kotlin Coroutines
+    def kotlin_coroutines_version = '1.1.1'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+
+    // RxJava2
+    api 'io.reactivex.rxjava2:rxjava:2.2.9'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    api project(':datasource')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
