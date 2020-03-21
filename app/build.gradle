@@ -28,7 +28,7 @@ android {
         enabled = true
     }
 
-    dynamicFeatures = [":feature1", ":feature2"]
+    dynamicFeatures = [":feature1", ":feature2", ":feature3"]
 
 
 }
