@@ -57,14 +57,15 @@ dependencies {
     api "androidx.paging:paging-runtime:$paging_version"
     api "androidx.paging:paging-rxjava2:$paging_version"
 
+    // RxJava2
+    api 'io.reactivex.rxjava2:rxjava:2.2.9'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
     // Kotlin Coroutines
     def kotlin_coroutines_version = '1.1.1'
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
 
-    // RxJava2
-    api 'io.reactivex.rxjava2:rxjava:2.2.9'
-    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
     // Testing
     testApi 'junit:junit:4.12'
