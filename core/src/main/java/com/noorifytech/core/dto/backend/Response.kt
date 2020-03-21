@@ -1,4 +1,4 @@
-package com.noorifytech.core.dto
+package com.noorifytech.core.dto.backend
 
 import com.google.gson.annotations.SerializedName
 

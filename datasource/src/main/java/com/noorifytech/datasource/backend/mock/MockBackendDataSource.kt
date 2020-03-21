@@ -1,7 +1,7 @@
-package com.noorifytech.datasource.backend.impl.mock
+package com.noorifytech.datasource.backend.mock
 
 import com.noorifytech.core.datasource.backend.BackendDataSource
-import com.noorifytech.core.dto.Response
+import com.noorifytech.core.dto.backend.Response
 
 class MockBackendDataSource : BackendDataSource {
     private val data = arrayOf(

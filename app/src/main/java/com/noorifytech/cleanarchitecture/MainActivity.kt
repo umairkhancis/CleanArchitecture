@@ -14,7 +14,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.feature1Btn.setOnClickListener {
-            navigateTo(Screens.Feature1GetDataScreen)
+            navigateTo(Screens.GetDataScreen)
+        }
+
+        binding.feature2Btn.setOnClickListener {
+            navigateTo(Screens.MoviesListingsScreen)
         }
     }
 }

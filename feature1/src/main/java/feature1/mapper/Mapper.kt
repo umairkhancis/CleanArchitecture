@@ -1,6 +1,6 @@
 package feature1.mapper
 
-import com.noorifytech.core.dto.Response
+import com.noorifytech.core.dto.backend.Response
 import feature1.dto.DataDto
 import feature1.dto.DataVO
 

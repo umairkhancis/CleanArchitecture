@@ -2,7 +2,7 @@ package feature1.viewmodel.impl
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.noorifytech.shared.base.BaseViewModel
+import com.noorifytech.shared.base.mvvm.BaseViewModel
 import com.noorifytech.shared.exception.AppException
 import feature1.usecase.FetchDataUseCase
 import feature1.viewmodel.Feature1ViewModel

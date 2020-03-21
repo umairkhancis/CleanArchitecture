@@ -1,4 +1,4 @@
-package com.noorifytech.shared.base
+package com.noorifytech.shared.base.mvvm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

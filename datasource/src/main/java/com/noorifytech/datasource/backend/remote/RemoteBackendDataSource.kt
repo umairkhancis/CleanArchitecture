@@ -1,7 +1,7 @@
-package com.noorifytech.datasource.backend.impl.remote
+package com.noorifytech.datasource.backend.remote
 
 import com.noorifytech.core.datasource.backend.BackendDataSource
-import com.noorifytech.core.dto.Response
+import com.noorifytech.core.dto.backend.Response
 
 class RemoteBackendDataSource : BackendDataSource {
     override suspend fun getData(): Response<String> {

@@ -25,7 +25,15 @@ fun Activity.navigateTo(screen: Screen) {
 }
 
 object Screens {
-    object Feature1GetDataScreen : Screen {
+    object GetDataScreen : Screen {
         override val actionName = "com.noorifytech.feature1.view.Feature1Activity"
+    }
+
+    object MoviesListingsScreen : Screen {
+        override val actionName = "com.noorifytech.feature2.view.activity.MoviesListActivity"
+    }
+
+    object MovieDetailsScreen : Screen {
+        override val actionName = "com.noorifytech.feature2.view.activity.MovieDetailsActivity"
     }
 }
