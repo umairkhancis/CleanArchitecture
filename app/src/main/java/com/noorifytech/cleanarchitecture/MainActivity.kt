@@ -23,5 +23,9 @@ class MainActivity : AppCompatActivity() {
         binding.feature2Btn.setOnClickListener {
             navigateTo(MoviesListingsScreen)
         }
+
+        binding.feature3Btn.setOnClickListener {
+            navigateTo(MoviesListingsScreen)
+        }
     }
 }

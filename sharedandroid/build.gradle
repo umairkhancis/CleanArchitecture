@@ -56,6 +56,16 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
 
+    // Glide - Image loading
+    def glide_version = '4.9.0'
+    api "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Paging - infinite scrolling
+    def paging_version = '2.1.2'
+    api "androidx.paging:paging-runtime:$paging_version"
+    api "androidx.paging:paging-rxjava2:$paging_version"
+
     // Testing
     testApi 'junit:junit:4.12'
     androidTestApi 'androidx.test.ext:junit:1.1.1'

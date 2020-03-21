@@ -1,7 +1,4 @@
 apply plugin: 'com.android.dynamic-feature'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -16,13 +13,13 @@ android {
     }
 
     viewBinding {
-        enabled = true
+        enabled true
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Base module
     implementation project(':app')
 }
