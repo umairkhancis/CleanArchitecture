@@ -13,6 +13,7 @@ class MockBackendDataSource : BackendDataSource {
     )
 
     override suspend fun getData(): Response<String> {
+        Thread.sleep(5000) // simulate network delay
         return Response(
             data = data[count++ % 4],
             statusCode = 200

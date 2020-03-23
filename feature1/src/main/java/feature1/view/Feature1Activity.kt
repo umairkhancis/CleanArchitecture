@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.noorifytech.feature1.databinding.ActivityFeature1ActivityBinding
+import com.noorifytech.shared.extensions.hide
+import com.noorifytech.shared.extensions.show
 import feature1.factory.Feature1Factory
 import feature1.viewmodel.Feature1ViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -43,7 +45,9 @@ class Feature1Activity : AppCompatActivity(), CoroutineScope {
 
     private fun showData() {
         launch {
-            viewModel.fetchData().observe(this@Feature1Activity, Observer { data ->
+            binding.progressBar.show()
+            viewModel.getData().observe(this@Feature1Activity, Observer { data ->
+                binding.progressBar.hide()
                 binding.dataTv.text = data
             })
         }

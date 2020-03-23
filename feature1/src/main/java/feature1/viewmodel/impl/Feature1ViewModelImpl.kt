@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.noorifytech.shared.base.mvvm.BaseViewModel
 import com.noorifytech.shared.exception.AppException
+import com.noorifytech.shared.extensions.background
 import feature1.usecase.FetchDataUseCase
 import feature1.viewmodel.Feature1ViewModel
 
@@ -14,9 +15,14 @@ class Feature1ViewModelImpl(private val useCase: FetchDataUseCase)
 
     private var _error: MutableLiveData<AppException> = MutableLiveData()
 
-    override suspend fun fetchData(): LiveData<String> {
+    private val tag = this.javaClass.simpleName
+
+    override suspend fun getData(): LiveData<String> {
         try {
-            val data = useCase.fetchData()
+            val data = background {
+                useCase.fetchData()
+            }
+
             updateView(data.value)
         } catch (appException: AppException) {
             updateView(appException)

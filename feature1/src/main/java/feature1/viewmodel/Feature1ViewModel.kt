@@ -6,5 +6,5 @@ import com.noorifytech.shared.exception.AppException
 interface Feature1ViewModel {
     val error: LiveData<AppException>
 
-    suspend fun fetchData(): LiveData<String>
+    suspend fun getData(): LiveData<String>
 }
